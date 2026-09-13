@@ -10463,5 +10463,17 @@
       "interactionType": "Oxidation or irritation",
       "userMessage": "Benzoyl peroxide may reduce the stability of some vitamin C formulas."
     }
+  ],
+  "excludedFromAvoid": [
+    "Salicornia Herbacea Extract",
+    "Olea Europaea (Olive) Fruit Extract",
+    "Olea Europaea (Olive) Leaf Extract",
+    "Plankton Extract",
+    "Polyglyceryl-3 Sorbityl Linseedate",
+    "Polyhydroxystearic Acid",
+    "Stearic Acid",
+    "Zea Mays (Corn) Starch",
+    "Polyglyceryl-3 Caprate",
+    "Jojoba Esters"
   ]
 }

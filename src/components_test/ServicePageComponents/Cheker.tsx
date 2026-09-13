@@ -25,15 +25,18 @@ const Cheker = () => {
   const [scanStatus, setScanStatus] = useState<ScanStatus>("idle");
   const [scanProgress, setScanProgress] = useState(0);
   const [pendingImageUrl, setPendingImageUrl] = useState<string | null>(null);
+  const [infoExpanded, setInfoExpanded] = useState(false);
 
   const submitBtn = () => {
     if (!input.trim()) return;
     setResults(checkIngredients(input));
+    setInfoExpanded(false);
   };
 
   const resetBtn = () => {
     setInput("");
     setResults(null);
+    setInfoExpanded(false);
   };
 
   const handlePhotoSelected = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -145,8 +148,14 @@ const Cheker = () => {
         </div>
 
         <div className="w-full flex flex-col gap-5" role="status" aria-live="polite">
+          {results && results.avoidMatches.length === 0 && (
+            <p className="font-bold text-green-700 text-center text-lg">
+              🎉 This product is free and clear of known pore-clogging ingredients!
+            </p>
+          )}
+
           {results && !hasAnyMatch && (
-            <p className="font-bold">
+            <p className="text-sm text-gray-500 text-center">
               None of the {results.checkedCount} ingredient{results.checkedCount > 1 ? "s" : ""} you listed
               matched anything in our reference list.
             </p>
@@ -174,28 +183,37 @@ const Cheker = () => {
 
           {results && results.infoMatches.length > 0 && (
             <div className="flex flex-col gap-3">
-              <h3 className="font-bold text-lg">
-                {results.infoMatches.length} recognized active ingredient{results.infoMatches.length > 1 ? "s" : ""}:
-              </h3>
-              <ul className="flex flex-col gap-2">
-                {results.infoMatches.map((m, index) => (
-                  <li key={index} className={`rounded-lg border p-3 text-sm text-left ${evidenceClass(m.record.evidenceLevel)}`}>
-                    <div className="flex flex-wrap items-center gap-2 font-semibold">
-                      <span>{m.ingredient}</span>
-                      {m.record.prescriptionOnly && (
-                        <span className="rounded-full bg-purple-100 border border-purple-400 text-purple-800 text-xs px-2 py-0.5 font-bold">
-                          Prescription — consult a professional
-                        </span>
-                      )}
-                      {m.record.evidenceLevel && (
-                        <span className="text-xs font-normal opacity-75">Evidence: {m.record.evidenceLevel}</span>
-                      )}
-                    </div>
-                    {m.record.benefits && <p className="mt-1">{m.record.benefits}</p>}
-                    {m.record.risks && <p className="mt-1 opacity-80">Possible side effects: {m.record.risks}</p>}
-                  </li>
-                ))}
-              </ul>
+              <button
+                type="button"
+                onClick={() => setInfoExpanded((v) => !v)}
+                aria-expanded={infoExpanded}
+                className="flex items-center gap-2 font-bold text-lg cursor-pointer text-left"
+              >
+                <span className={`inline-block transition-transform ${infoExpanded ? "rotate-90" : ""}`}>▶</span>
+                {results.infoMatches.length} recognized active ingredient{results.infoMatches.length > 1 ? "s" : ""}
+                <span className="text-sm font-normal opacity-60">{infoExpanded ? "(hide)" : "(show)"}</span>
+              </button>
+              {infoExpanded && (
+                <ul className="flex flex-col gap-2">
+                  {results.infoMatches.map((m, index) => (
+                    <li key={index} className={`rounded-lg border p-3 text-sm text-left ${evidenceClass(m.record.evidenceLevel)}`}>
+                      <div className="flex flex-wrap items-center gap-2 font-semibold">
+                        <span>{m.ingredient}</span>
+                        {m.record.prescriptionOnly && (
+                          <span className="rounded-full bg-purple-100 border border-purple-400 text-purple-800 text-xs px-2 py-0.5 font-bold">
+                            Prescription — consult a professional
+                          </span>
+                        )}
+                        {m.record.evidenceLevel && (
+                          <span className="text-xs font-normal opacity-75">Evidence: {m.record.evidenceLevel}</span>
+                        )}
+                      </div>
+                      {m.record.benefits && <p className="mt-1">{m.record.benefits}</p>}
+                      {m.record.risks && <p className="mt-1 opacity-80">Possible side effects: {m.record.risks}</p>}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           )}
 

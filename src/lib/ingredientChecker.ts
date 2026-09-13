@@ -43,9 +43,12 @@ export interface CheckResults {
 
 const allIngredients = ingredientsData.ingredients as IngredientRecord[];
 const allInteractions = ingredientsData.interactions as InteractionRecord[];
+const excludedFromAvoid = (ingredientsData.excludedFromAvoid as string[]).map((s) => normalize(s));
 
 export function normalize(ingredient: string) {
-  return ingredient.trim().toLowerCase().replace(/[^a-z]/g, "");
+  // Keep digits: many INCI names are only distinguished by a number, e.g.
+  // "Polyglyceryl-3 Caprate" vs "Polyglyceryl-4 Caprate" are different esters.
+  return ingredient.trim().toLowerCase().replace(/[^a-z0-9]/g, "");
 }
 
 interface Candidate {
@@ -92,6 +95,18 @@ export function checkIngredients(input: string): CheckResults {
 
     const hit = candidates.find((c) => normalized.includes(c.term));
     if (!hit) continue;
+
+    // Some dictionary entries are short/generic enough to false-positive on
+    // an unrelated ingredient that merely contains the same letters (e.g.
+    // the "corn" entry matching inside "Salicornia Herbacea Extract", or
+    // "olive" matching inside "Olea Europaea (Olive) Fruit Extract"). Known
+    // false positives like these are excluded here rather than by removing
+    // the underlying dictionary entry, since that entry is still correct
+    // for its real intended ingredient (e.g. actual corn oil or olive oil).
+    if (hit.record.type === "avoid" && excludedFromAvoid.some((term) => normalized.includes(term))) {
+      continue;
+    }
+
     seen.add(normalized);
 
     const result: MatchResult = { ingredient, matchedOn: hit.record.name, record: hit.record };
