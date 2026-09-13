@@ -150,7 +150,7 @@ const Cheker = () => {
         <div className="w-full flex flex-col gap-5" role="status" aria-live="polite">
           {results && results.avoidMatches.length === 0 && (
             <p className="font-bold text-green-700 text-center text-lg">
-              ✓ Great news — this product is clear of known pore-clogging ingredients.
+              🎉 This product is free and clear of known pore-clogging ingredients!
             </p>
           )}
 
@@ -246,10 +246,7 @@ const Cheker = () => {
         </div>
 
         <p className="text-xs text-gray-500 text-center max-w-[550px]">
-          This tool checks against a general reference list and is not a substitute for professional
-          dermatological advice or a substitute for reading the actual product label. An ingredient not listed
-          here isn't guaranteed to be safe for every skin type, and evidence levels reflect general research,
-          not a guarantee of results for any specific product or concentration.
+          This is a general reference tool, not a substitute for professional dermatological advice.
         </p>
       </div>
 
