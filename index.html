@@ -83,6 +83,73 @@
     </script>
   </head>
   <body>
+    <!--
+      Static form for Netlify's build-time form-detection bot. This is never
+      shown or used directly -- the real, interactive form is rendered by
+      React at src/components_test/ConsultationPageComponents/ConsultationSurvey.tsx
+      and submits via fetch() to this same registered form name ("consultation").
+      Netlify's crawler only scans the built HTML (it doesn't run JS), so a
+      form that only ever exists inside a React component would never be
+      registered without this static twin. If a field is added to
+      surveyData.ts, add its name here too so Netlify's dashboard shows it.
+    -->
+    <form name="consultation" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input type="text" name="FullName" />
+      <input type="text" name="Age" />
+      <input type="text" name="PhoneNumber" />
+      <input type="text" name="Email" />
+      <input type="text" name="pregnancyStatus" />
+      <input type="text" name="mainConcerns" />
+      <input type="text" name="topPriority" />
+      <input type="text" name="bestSkinPeriod" />
+      <input type="text" name="skinType" />
+      <input type="text" name="issueStartTime" />
+      <input type="text" name="changeTriggers" />
+      <input type="text" name="currentSensations" />
+      <input type="text" name="breakoutLocations" />
+      <input type="text" name="breakoutType" />
+      <input type="text" name="currentBreakoutStart" />
+      <input type="text" name="breakoutPattern" />
+      <input type="text" name="breakoutMarks" />
+      <input type="text" name="touchesBreakouts" />
+      <input type="text" name="diagnoses" />
+      <input type="text" name="currentSigns" />
+      <input type="text" name="prescriptionMeds" />
+      <input type="text" name="pastTreatments" />
+      <input type="text" name="knownAllergies" />
+      <input type="text" name="supplements" />
+      <input type="text" name="stressLevel" />
+      <input type="text" name="sleepHours" />
+      <input type="text" name="digestion" />
+      <input type="text" name="foodTrigger" />
+      <input type="text" name="amCleanser" />
+      <input type="text" name="amSerum" />
+      <input type="text" name="amMoisturizer" />
+      <input type="text" name="amSpf" />
+      <input type="text" name="amOther" />
+      <input type="text" name="pmCleanser" />
+      <input type="text" name="pmTreatment" />
+      <input type="text" name="pmRetinol" />
+      <input type="text" name="pmAcid" />
+      <input type="text" name="pmMoisturizer" />
+      <input type="text" name="pmOther" />
+      <input type="text" name="activesFrequency" />
+      <input type="text" name="routineDuration" />
+      <input type="text" name="productReaction" />
+      <input type="text" name="routineChanges" />
+      <input type="text" name="triedAlready" />
+      <input type="text" name="recentTreatments" />
+      <input type="text" name="badReaction" />
+      <input type="text" name="routineComplexity" />
+      <input type="text" name="budget" />
+      <input type="text" name="avoidances" />
+      <input type="file" name="photoFront" />
+      <input type="file" name="photoRight" />
+      <input type="file" name="photoLeft" />
+      <input type="file" name="photoExtra" />
+      <input type="text" name="marketingOptIn" />
+      <input name="bot-field" />
+    </form>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
