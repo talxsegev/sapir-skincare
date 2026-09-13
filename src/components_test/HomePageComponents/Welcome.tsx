@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Welcome : FC = () => {
   return (
     <div className="relative p-25  grid gap-20 justify-center md:flex md:gap-50">
-      <div className="min-w-[350px] md:min-w-[480px] p-3 md:p-0">
+      <div className="relative min-w-[350px] md:min-w-[480px] p-3 md:p-0">
         <div>
           <h2
             className="absolute top-20 md:top-16  font-light text-5xl md:text-7xl"
@@ -17,7 +17,7 @@ const Welcome : FC = () => {
           </h2>
         </div>
         <div className="flex items-start justify-center md:justify-end">
-          <img src={SegevPhoto3} className="max-w-[307px] md:max-w-[407px]" alt="" loading="lazy" decoding="async" />
+          <img src={SegevPhoto3} className="max-w-[307px] md:max-w-[407px]" alt="" />
         </div>
       </div>
       <div className="p-10 flex flex-col justify-center max-w-[465px] md:p-0">

@@ -20,7 +20,7 @@ const PackagesAreComing = () => {
             <p className="text-sm">stay tuned!</p>
           </div>
           </div>
-          <div className="flex flex-col items-center justify-center border-1 border-t-0 border-r-0 border-b-0 border-black">
+          <div className="flex flex-col min-h-[160px] items-center justify-center border-1 border-t-0 border-r-0 border-b-0 border-black">
             <span className="min-w-[160px] rotate-90 text-xl">Schedule a free call</span>
           </div>
         </div>
@@ -38,7 +38,7 @@ const PackagesAreComing = () => {
             <p className="text-sm">stay tuned!</p>
           </div>
           </div>
-          <div className="flex flex-col items-center justify-center border-1 border-t-0 border-l-0 border-b-0 border-black">
+          <div className="flex flex-col min-h-[160px] items-center justify-center border-1 border-t-0 border-l-0 border-b-0 border-black">
             <span className="min-w-[160px]  rotate-270 text-xl">Schedule a free call</span>
           </div>
         </div>
@@ -56,7 +56,7 @@ const PackagesAreComing = () => {
             <p className="text-sm">stay tuned!</p>
           </div>
           </div>
-          <div className="flex flex-col items-center justify-center border-1 border-t-0 border-r-0 border-b-0 border-black">
+          <div className="flex flex-col min-h-[160px] items-center justify-center border-1 border-t-0 border-r-0 border-b-0 border-black">
             <span className="min-w-[160px] rotate-90 text-xl inline">Schedule a free call</span>
           </div>
         </div>
