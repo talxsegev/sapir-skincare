@@ -1,4 +1,3 @@
-import React from "react";
 import Voyage from "../../assets/Voyage.avif";
 import AsBell from "../../assets/AsBeel.avif";
 import SegevCients1 from "../../assets/SegevClients1.avif";
@@ -40,11 +39,15 @@ const AsSeenOn = () => {
             src={Voyage}
             className="max-w-[150px] md:max-w-[216px] max-h-[56px]"
             alt=""
+            loading="lazy"
+            decoding="async"
           />
           <img
             src={AsBell}
             className="max-w-[150px] md:max-w-[216px] max-h-[56px]"
             alt=""
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </div>
@@ -52,7 +55,6 @@ const AsSeenOn = () => {
         <h1
           className="text-5xl text- md:text-left md:text-6xl"
           style={{
-            fontFamily: "Wix Madefor Text sans-serif",
             fontWeight: "lighter",
           }}
         >
@@ -74,6 +76,8 @@ const AsSeenOn = () => {
                         src={img}
                         alt={`Before & After ${index + 1}`}
                         className="object-fill hover:opacity-20 transition-opacity duration-1000"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </CardContent>
                   </Card>

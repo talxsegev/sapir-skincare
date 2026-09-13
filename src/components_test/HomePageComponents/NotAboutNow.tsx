@@ -1,7 +1,7 @@
 import SegevPhoto1 from "../../assets/SegevPhoto.avif";
 import SegevPhotos2 from "../../assets/SegevPhotos2.avif";
 import { Link } from "react-router-dom";
-import { Fade, Zoom, Slide } from "react-awesome-reveal";
+import { Zoom } from "react-awesome-reveal";
 
 
 const NotAboutNow = () => {
@@ -18,7 +18,6 @@ const NotAboutNow = () => {
           <div className="flex flex-col gap-5 md:gap-5 absolute top-15 p-1 text-center xl:top-0 xl:p-20 md:p-0">
             <h2
               className="text-white text-3xl font-mono xl:text-4xl md:text-2xl"
-              style={{ fontFamily: "Wix Madefor Text sans-serif" }}
             >
               ITS NOT ABOUT HOW YOU LOOK, ITS <br /> ABOUT HOW YOU FEEL
             </h2>
@@ -62,21 +61,19 @@ const NotAboutNow = () => {
           </span>
         </div>
         <div className="flex flex-col w-1/3  items-center">
-          <h3 className="font-semibold text-2xl">10+</h3>
-          <h4 className="font-sans text-sm">Years of Experience</h4>
+          <h3 className="font-semibold text-2xl">100%</h3>
+          <h4 className="font-sans text-sm">Personalized Care</h4>
           <span className="font-light text-xs max-w-55">
-            Benefit from over a decade of hands-on expertise in skincare,
-            ensuring you receive treatments perfected through years of practice
-            and refinement
+            Every treatment plan is tailored to your unique skin type and
+            goals, never a one-size-fits-all approach
           </span>
         </div>
         <div className="flex flex-col w-1/3  items-center">
-          <h3 className="font-semibold text-2xl">10+</h3>
-          <h4 className="font-sans text-sm">Years of Experience</h4>
+          <h3 className="font-semibold text-2xl">3</h3>
+          <h4 className="font-sans text-sm">Continents of Sourcing</h4>
           <span className="font-light text-xs max-w-55">
-            Benefit from over a decade of hands-on expertise in skincare,
-            ensuring you receive treatments perfected through years of practice
-            and refinement
+            Clinical and medical-grade products sourced from Europe, Israel,
+            and the USA, tailored to your treatment and after-care
           </span>
         </div>
       </div>

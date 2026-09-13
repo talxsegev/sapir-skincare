@@ -22,12 +22,12 @@ const WhoWeAre = () => {
             renewed in every aspect. I truly believe that when you feel good, it
             radiates on the outside. My approach focuses on combining hands on
             treatment along with the most up to date innovations in aesthetics,
-            because you should never have to choose between the two. ​​​
+            because you should never have to choose between the two.
           </p>
         </div>
         <div className="  pr-20 pl-20 relative flex flex-col items-center">
-          <img src={SegevPhoto9} className="max-w-[300px]" alt="" />
-          <h1 style={{ fontFamily: "Wix Madefor Text sans-serif" }} className="text-6xl md:text-7xl absolute bottom-0">Who WE ARE</h1>
+          <img src={SegevPhoto9} className="max-w-[300px]" alt="" loading="lazy" decoding="async" />
+          <h1 className="text-6xl md:text-7xl absolute bottom-0">Who WE ARE</h1>
         </div>
       </div>
     </div>

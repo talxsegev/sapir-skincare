@@ -10,7 +10,6 @@ const Connect = () => {
           <h3
             className="text-3xl font-light text-center"
             style={{
-              fontFamily: "Wix Madefor Text sans-serif",
               fontWeight: "lighter",
             }}
           >

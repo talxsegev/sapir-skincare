@@ -1,13 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
 import Sea from "../../assets/Sea.jpg"
 import SegevClients10 from "../../assets/SegevClinets10.avif"
 import { FiInstagram } from "react-icons/fi";
 import { FaFacebookF } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
-import { FaLinkedinIn } from "react-icons/fa";
-import { FaTiktok } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
 
 const WelcomeBlog = () => {
   return (
@@ -17,20 +11,15 @@ const WelcomeBlog = () => {
           <h3
             className="text-7xl font-light absolute -top-10 z-10 text-center w-full"
             style={{
-              fontFamily: "Wix Madefor Text sans-serif",
               fontWeight: "lighter",
             }}
           >
             BLOG
           </h3>
-          <img src={SegevClients10} className='max-h-[250px] max-w-[250px]' />
+          <img src={SegevClients10} className='max-h-[250px] max-w-[250px]' alt="Sapir Skincare" />
           <div className='mt-1 flex gap-3'>
-              <a href="https://www.instagram.com/sapirskincare/"><FiInstagram  className='w-3 h-3'/></a>
-              <a href="https://www.facebook.com/sapir.segev.52"><FaFacebookF  className='w-3 h-3'/></a>
-              <a><FaTwitter  className='w-3 h-3'/></a>
-              <a><FaLinkedinIn  className='w-3 h-3'/></a>
-              <a><FaYoutube  className='w-3 h-3'/></a>
-              <a><FaTiktok  className='w-3 h-3'/></a>
+              <a href="https://www.instagram.com/sapirskincare/" target="_blank" rel="noopener noreferrer" aria-label="Sapir Skincare on Instagram"><FiInstagram  className='w-3 h-3'/></a>
+              <a href="https://www.facebook.com/sapir.segev.52" target="_blank" rel="noopener noreferrer" aria-label="Sapir Skincare on Facebook"><FaFacebookF  className='w-3 h-3'/></a>
           </div>
         </div>
     </div>

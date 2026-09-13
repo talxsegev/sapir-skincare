@@ -1,3 +1,4 @@
+import SEO from '../components_test/SEO'
 import NotAboutNow from '../components_test/HomePageComponents/NotAboutNow'
 import Welcome from '../components_test/HomePageComponents/Welcome'
 import Service from '../components_test/HomePageComponents/Service'
@@ -10,7 +11,12 @@ import Footer from '../components_test/Footer'
 
 const HomePage = () => {
   return (
-    <div style={{ backgroundColor: 'rgba(237, 235, 228, 1)',fontFamily: "Wix Madefor Text sans-serif" }}>
+    <div style={{ backgroundColor: 'rgba(237, 235, 228, 1)'}}>
+      <SEO
+        title="Beverly Hills Face & Body Clinic"
+        description="Sapir Skincare is a renowned face and body clinic on Rodeo Drive in Beverly Hills, offering personalized facials, chemical peels, microneedling, and body treatments."
+        path="/"
+      />
       <NotAboutNow />
       <Welcome />
       <Service />

@@ -13,6 +13,8 @@ const Connect = () => {
             src={SegevPeople7}
             className="max-w-[250px] md:max-w-[300px] max-h-[300px]"
             alt=""
+            loading="lazy"
+            decoding="async"
           />
           <div className="flex gap-5 mt-5 justify-center">
             <a
@@ -36,7 +38,7 @@ const Connect = () => {
           </div>
         </div>
         <div className="flex flex-col gap-5 max-w-[630px] md:h-full  md:max-h-[270px]  border border-black p-5 md:p-10 text-center">
-            <h3 className="text-4xl" style={{ fontFamily: "Wix Madefor Text sans-serif" }}>Join Our Glow Community</h3>
+            <h3 className="text-4xl">Join Our Glow Community</h3>
             <p>Don't Miss Out!</p>
             <p className="font-light text-xs">Join our newsletter for exclusive skincare tips, product<br /> recommendations, and special offers delivered straight to your <br/> inbox. Don't miss out on your journey to glowing, healthy skin!</p>
             <Link to="/contact"><button className="border p-1 pr-3 pl-3 cursor-pointer hover:border-black font-light text-sm" style={{backgroundColor:"#EDEBE4"}}>Subscribe and save 10% your first visit</button></Link>

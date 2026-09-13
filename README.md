@@ -1,54 +1,50 @@
-# React + TypeScript + Vite
+# Sapir Skincare
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Marketing website for Sapir Skincare, a face and body clinic in Beverly Hills.
+Built with React 19, TypeScript, React Router, Tailwind CSS v4, and Vite.
 
-Currently, two official plugins are available:
+## Getting started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install
+cp .env.example .env   # then fill in your EmailJS credentials
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `npm run dev` — start the local dev server
+- `npm run build` — type-check and build for production into `dist/`
+- `npm run preview` — serve the production build locally
+- `npm run lint` — run ESLint
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Environment variables
+
+The contact form uses [EmailJS](https://www.emailjs.com/) to send messages
+without a backend. Copy `.env.example` to `.env` and fill in:
+
+- `VITE_EMAILJS_SERVICE_ID`
+- `VITE_EMAILJS_TEMPLATE_ID`
+- `VITE_EMAILJS_PUBLIC_KEY`
+
+These are required at build time — Vite bakes them into the client bundle.
+
+## Deployment (GoDaddy)
+
+This is a static single-page app. After `npm run build`, upload the contents
+of `dist/` to the web root on GoDaddy hosting. The build includes a
+`.htaccess` file that:
+
+- Rewrites all routes to `index.html` so client-side routing (React Router)
+  works on direct loads and refreshes (e.g. `/about`, `/service`).
+- Redirects `http` → `https` and `www` → the bare domain.
+- Sets basic security headers and long-lived caching for static assets.
+
+See `public/.htaccess`, `public/robots.txt`, and `public/sitemap.xml`.
+
+## Project structure
+
+- `src/Pages/` — one component per route (Home, About, Service, Blog, Contact, 404)
+- `src/components_test/` — page sections and shared UI (nav, footer, forms, shadcn-style UI primitives)
+- `src/components_test/SEO.tsx` — lightweight per-page `<title>`/meta tag manager
+- `public/` — static assets copied as-is to the build output (favicons, robots.txt, sitemap.xml, `.htaccess`)

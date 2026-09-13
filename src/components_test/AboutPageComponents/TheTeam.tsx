@@ -29,7 +29,6 @@ const TheTeam = () => {
         <div>
           <h1
             className="text-7xl"
-            style={{ fontFamily: "Wix Madefor Text sans-serif" }}
           >
             THE TEAM
           </h1>
@@ -38,7 +37,6 @@ const TheTeam = () => {
         <div>
           <h3
             className="text-4xl"
-            style={{ fontFamily: "Wix Madefor Text sans-serif" }}
           >
             We are the team that can
             <br /> make it happen for you
@@ -47,11 +45,13 @@ const TheTeam = () => {
       </div>
       <div className="flex justify-center gap-15">
         {arr.map((item) => (
-          <div className="flex flex-col items-center gap-2">
+          <div key={item.title} className="flex flex-col items-center gap-2">
             <img
               src={item.img}
               className="min-w-[230px] max-w-[230px] min-h-[230px] max-h-[230px]"
-              alt=""
+              alt={item.title}
+              loading="lazy"
+              decoding="async"
             />
             <h4>{item.title}</h4>
             <p className="font-light">{item.subTitle}</p>

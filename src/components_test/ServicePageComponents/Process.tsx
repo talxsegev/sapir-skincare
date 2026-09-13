@@ -9,7 +9,6 @@ const Process = () => {
         <div className="flex flex-col gap-5 items-center">
           <h1
             className="text-6xl md:text-8xl font-light"
-            style={{ fontFamily: "Wix Madefor Text sans-serif" }}
           >
             PROCESS
           </h1>

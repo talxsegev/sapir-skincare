@@ -1,0 +1,52 @@
+# Sapir Skincare — Apache config for GoDaddy shared hosting
+# This site is a client-side single-page app (React Router). Without the
+# rewrite rules below, opening a URL directly (e.g. sapir-skincare.com/about)
+# or refreshing it returns a 404 from the server, because there is no such
+# file on disk — only index.html + client-side routing.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Redirect www to non-www (canonical host: sapir-skincare.com)
+  RewriteCond %{HTTP_HOST} ^www\.sapir-skincare\.com [NC]
+  RewriteRule ^ https://sapir-skincare.com%{REQUEST_URI} [L,R=301]
+
+  RewriteBase /
+
+  # Serve real files/directories as-is (assets, robots.txt, sitemap.xml, etc.)
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Everything else falls back to index.html so React Router can handle it
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Caching for hashed, immutable build assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
