@@ -20,33 +20,42 @@ npm run dev
 
 ## Environment variables
 
-The contact form and the skin consultation survey both use
-[EmailJS](https://www.emailjs.com/) to send messages without a backend.
-Copy `.env.example` to `.env` and fill in:
+The contact form uses [EmailJS](https://www.emailjs.com/) to send messages
+without a backend. Copy `.env.example` to `.env` and fill in:
 
 - `VITE_EMAILJS_SERVICE_ID`
-- `VITE_EMAILJS_TEMPLATE_ID` — used by the Contact page form
-- `VITE_EMAILJS_CONSULTATION_TEMPLATE_ID` — used by the `/consultation` survey (see below)
+- `VITE_EMAILJS_TEMPLATE_ID`
 - `VITE_EMAILJS_PUBLIC_KEY`
 
 These are required at build time — Vite bakes them into the client bundle.
 
-### The consultation survey's EmailJS template
+### The consultation survey (`/consultation`) — Netlify Forms, not EmailJS
 
-`/consultation` is a large, multi-step form (basics, concerns, medical
-history, routine, photos, etc.) that submits via `emailjs.sendForm`, the
-same mechanism as the Contact form, but it needs **its own EmailJS
-template** (separate from the contact template) since it has a different,
-much longer set of fields. In the EmailJS dashboard, create a new template
-whose body references each field by its form name — see
-`src/components_test/ConsultationPageComponents/surveyData.ts` for the
-full list of question `id`s (each one is also the form field name, e.g.
-`{{FullName}}`, `{{mainConcerns}}`, `{{skinType}}`, `{{photoFront}}`, etc.).
-Put that template's ID in `VITE_EMAILJS_CONSULTATION_TEMPLATE_ID`.
+This form is much larger than the contact form and includes photo uploads.
+It was originally wired to EmailJS like the contact form, but EmailJS
+enforces a **hard 50KB cap on total request size**, and real (even
+compressed) skin photos blow through that immediately — so it submits via
+[Netlify Forms](https://docs.netlify.com/manage/forms/setup/) instead, via
+a plain `fetch("/", { method: "POST", body: formData })` in
+`ConsultationSurvey.tsx`.
 
-Photos are compressed client-side (resized + re-encoded as JPEG) before
-sending, since phone photos are usually far larger than typical email
-attachment limits — see `src/lib/imageCompress.ts`.
+Netlify's form-detection bot only scans the *built static HTML* (it
+doesn't run JS), so a form that only ever exists inside a React component
+would never get registered. `index.html` has a hidden, never-displayed
+twin of the real form (same `name="consultation"` and field names) purely
+so Netlify's crawler can find it at deploy time and register the form
+(and its expected fields) in your Netlify dashboard. **If a field is ever
+added to `surveyData.ts`, add its name to that hidden form in
+`index.html` too**, or it won't show as a proper column in Netlify's UI.
+
+Submissions (including the attached photos) land in your Netlify
+dashboard under **Forms**. To get emailed when one arrives: Site
+configuration → Forms → Form notifications → Add notification → Email
+notification.
+
+Photos are still compressed client-side (resized + re-encoded as JPEG)
+before upload, to keep the whole submission reasonably sized — see
+`src/lib/imageCompress.ts`.
 
 ## Deployment
 
