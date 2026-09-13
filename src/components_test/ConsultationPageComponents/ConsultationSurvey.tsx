@@ -148,11 +148,11 @@ const ConsultationSurvey = () => {
               <span>I agree that Sapir Skincare may store and review my photos solely for the purpose of this consultation.</span>
             </label>
             <label className="flex items-start gap-2 text-sm">
+              <input type="hidden" name="marketingOptIn" value={marketingOptIn ? "Yes" : "No"} />
               <input
                 type="checkbox"
                 checked={marketingOptIn}
                 onChange={(e) => setMarketingOptIn(e.target.checked)}
-                name="marketingOptIn"
                 className="mt-1"
               />
               <span>I'd like to receive marketing updates by email or SMS (optional).</span>
