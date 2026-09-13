@@ -2,9 +2,9 @@ import { describe, expect, it } from "vitest";
 import { checkIngredients, countIngredients, normalize } from "./ingredientChecker";
 
 describe("normalize", () => {
-  it("lowercases, trims, and strips non-letters", () => {
+  it("lowercases, trims, and strips non-alphanumeric characters (keeping digits)", () => {
     expect(normalize("  Coconut Oil  ")).toBe("coconutoil");
-    expect(normalize("D&C Red #17")).toBe("dcred");
+    expect(normalize("D&C Red #17")).toBe("dcred17");
   });
 });
 
@@ -69,5 +69,23 @@ describe("checkIngredients", () => {
   it("does not duplicate a matched ingredient listed twice", () => {
     const { avoidMatches } = checkIngredients("Coconut Oil, Water, Coconut Oil");
     expect(avoidMatches.map((m) => m.ingredient)).toEqual(["Coconut Oil"]);
+  });
+
+  it("does not flag ingredients that only coincidentally contain a short dictionary word", () => {
+    const { avoidMatches } = checkIngredients(
+      "Salicornia Herbacea Extract, Olea Europaea (Olive) Fruit Extract, Zea Mays (Corn) Starch, Jojoba Esters, Stearic Acid"
+    );
+    expect(avoidMatches).toEqual([]);
+  });
+
+  it("still flags the real ingredient a false-positive dictionary word is meant for", () => {
+    const { avoidMatches } = checkIngredients("Olive Oil, Corn Oil");
+    expect(avoidMatches.map((m) => m.ingredient)).toEqual(["Olive Oil", "Corn Oil"]);
+  });
+
+  it("distinguishes ingredients that differ only by a number", () => {
+    expect(normalize("Polyglyceryl-3 Caprate")).not.toBe(normalize("Polyglyceryl-4 Caprate"));
+    const { avoidMatches } = checkIngredients("Polyglyceryl-3 Caprate");
+    expect(avoidMatches).toEqual([]);
   });
 });
