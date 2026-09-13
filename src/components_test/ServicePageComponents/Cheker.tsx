@@ -150,7 +150,7 @@ const Cheker = () => {
         <div className="w-full flex flex-col gap-5" role="status" aria-live="polite">
           {results && results.avoidMatches.length === 0 && (
             <p className="font-bold text-green-700 text-center text-lg">
-              🎉 Free and clear!
+              ✓ Great news — no known pore-clogging ingredients found.
             </p>
           )}
 
