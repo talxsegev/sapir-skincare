@@ -11,13 +11,13 @@ const Connect = () => {
             <h3 className='text-4xl'>CONNECT</h3>
         <div className='flex justify-between relative gap-5'>
             <div className=''>
-                <img src={ImgUnlock1} alt="" />
+                <img src={ImgUnlock1} alt="" loading="lazy" decoding="async" />
             </div>
             <div className=' p-3 absolute left-1/2 top-2/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center' style={{ backgroundColor: "rgb(255, 253, 245)" }}>
                 <p className='font-light text-xs text-center'>We are dedicated to delivering expert services, combining advanced techniques and personalized care to transform your skin and reveal your true beauty</p>
             </div>
             <div className=''>
-                <img src={ImgUnlock2} alt="" />
+                <img src={ImgUnlock2} alt="" loading="lazy" decoding="async" />
             </div>
         </div>
         </div>
@@ -48,7 +48,7 @@ const Connect = () => {
                   sapirskincarela@gmail.com
                 </span>
                 </a>
-                    <div className='flex gap-2 items-center'><FaPhoneAlt /><span className='text-md font-light'>+15053524978</span></div>
+                    <a href="tel:+18182662387" className='flex gap-2 items-center'><FaPhoneAlt /><span className='text-md font-light'>(818) 266-2387</span></a>
                 </div>
             </div>
         </div>

@@ -1,39 +1,23 @@
-import React, { useState } from "react";
-import Words from "./Words.json";
+import { useState } from "react";
+import { findAcneCausingIngredients } from "../../lib/ingredientChecker";
 
 const Cheker = () => {
-  const [word, setWord] = useState<string>("");
-  const [savedWords, setSavedWords] = useState<string[]>([]);
-  const [isDisplay, setIsDisplay] = useState<boolean | null>(null);
-
-  console.log(savedWords);
-
-  const akneWords = Words.words;
+  const [input, setInput] = useState<string>("");
+  const [result, setResult] = useState<"matches" | "clear" | null>(null);
+  const [matchedIngredients, setMatchedIngredients] = useState<string[]>([]);
 
   const submitBtn = () => {
-    for (let i = 0; i < akneWords.length; i++) {
-      if (
-        akneWords[i].toLowerCase().replace(/[^a-zA-Z]/g, "") ===
-        word
-          .trim()
-          .toLowerCase()
-          .replace(/[^a-zA-Z]/g, "")
-      ) {
-        alert("akne");
-        if (!savedWords.includes(word.trim())) {
-          setSavedWords((prev) => [...prev, word.trim()]);
-        }
-        setIsDisplay(true);
-        return;
-      }
-    }
+    if (!input.trim()) return;
 
-    setIsDisplay(false);
-    alert("not found");
+    const matches = findAcneCausingIngredients(input);
+    setMatchedIngredients(matches);
+    setResult(matches.length > 0 ? "matches" : "clear");
   };
 
   const resetBtn = () => {
-    setSavedWords([]);
+    setInput("");
+    setMatchedIngredients([]);
+    setResult(null);
   };
 
   return (
@@ -45,45 +29,47 @@ const Cheker = () => {
         <div className="flex flex-col text-center gap-2">
           <h1 className="text-2xl">Your Ingredients</h1>
           <h1 className="text-xl">
-            Add your ingredients below to see if any cause acne on your skin.
+            Add your ingredients below (separated by commas or new lines) to see if any are known to cause acne.
           </h1>
         </div>
         <div className="w-full">
+          <label htmlFor="cheker" className="sr-only">Ingredient list</label>
           <textarea
-            onChange={(e) => setWord(e.target.value)}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
             name="cheker"
             id="cheker"
+            placeholder="e.g. Water, Coconut Oil, Glycerin, Shea Butter..."
             className="w-full h-40 border hover:border-black transition-colors  duration-300 rounded-lg p-2"
           ></textarea>
         </div>
 
-        <div className="w-full max-h-[150px] min-h-[150px]">
-          {isDisplay === true ? (
+        <div className="w-full max-h-[150px] min-h-[150px]" role="status" aria-live="polite">
+          {result === "matches" ? (
             <div className="w-full flex flex-col gap-5 max-h-[150px] min-h-[150px] overflow-y-auto overflow-x-hidden">
-              <h3 className="font-bold text-xl text-red-600">Oh no! Our AI Found acne-causing ingredient.</h3>
-              <ol  className="list-decimal list-inside">
-              {savedWords.map((word, index) => (
-                <li key={index} className="font-bold">
-                  {word}
-                </li>
-               
-              ))}
-               </ol>
+              <h3 className="font-bold text-xl text-red-600">We found ingredient(s) known to potentially cause acne:</h3>
+              <ol className="list-decimal list-inside">
+                {matchedIngredients.map((word, index) => (
+                  <li key={index} className="font-bold">
+                    {word}
+                  </li>
+                ))}
+              </ol>
             </div>
-          ) : isDisplay === false ?(
-            <p className="font-bold">This item is saved!</p>
+          ) : result === "clear" ? (
+            <p className="font-bold">Good news — none of these ingredients matched our list of known acne-causing ingredients.</p>
           ) : null}
         </div>
 
         <div className="flex gap-2 justify-center md:justify-start w-full">
           <button
-            style={{backgroundColor:"#d79a88"}}
+            style={{ backgroundColor: "#d79a88" }}
             onClick={submitBtn}
-            className="p-5 rounded-full border text-white"
+            className="p-5 rounded-full border text-white cursor-pointer"
           >
             SUBMIT
           </button>
-          <button onClick={resetBtn} className="p-5 rounded-full border">
+          <button onClick={resetBtn} className="p-5 rounded-full border cursor-pointer">
             RESET
           </button>
         </div>

@@ -33,12 +33,12 @@ const OurGoals = () => {
   return (
     <div className='flex flex-col gap-15 items-center p-15'>
       <div className='flex flex-col items-center gap-5'>
-        <h2 className='text-4xl' style={{ fontFamily: "Wix Madefor Text sans-serif" }}>Our goals for your SKIN</h2>
+        <h2 className='text-4xl'>Our goals for your SKIN</h2>
         <p className='text-xs'>WE DEDICATED TO TRANSFORMING YOUR SKIN </p>
       </div>
       <div className='flex flex-col gap-5'>
-        {arr.map((item,index) => (
-            <div style={{ backgroundColor: "rgb(255, 253, 245)" }} className='p-2 border-1 border-black pr-30 pl-5 flex flex-col gap-1'>
+        {arr.map((item) => (
+            <div key={item.title} style={{ backgroundColor: "rgb(255, 253, 245)" }} className='p-2 border-1 border-black pr-30 pl-5 flex flex-col gap-1'>
             <p className='text-sm '>{item.title}</p>
             <p className='text-xs font-light'>{item.subTitle}</p>
         </div>

@@ -1,26 +1,28 @@
+import { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from './Pages/HomePage';
 import Nav from "./components_test/Nav";
-import About from "./Pages/About";
-import Service from "./Pages/Service";
-import Blog from "./Pages/Blog";
-import Contact from "./Pages/Contact";
-import { useState } from "react";
+
+const HomePage = lazy(() => import("./Pages/HomePage"));
+const About = lazy(() => import("./Pages/About"));
+const Service = lazy(() => import("./Pages/Service"));
+const Blog = lazy(() => import("./Pages/Blog"));
+const Contact = lazy(() => import("./Pages/Contact"));
+const NotFound = lazy(() => import("./Pages/NotFound"));
 
 function App() {
-
-  
-
   return (
     <BrowserRouter>
       <Nav />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/service" element={<Service />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <Suspense fallback={<div className="min-h-[60vh]" style={{ backgroundColor: "rgba(237, 235, 228, 1)" }} />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/service" element={<Service />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }

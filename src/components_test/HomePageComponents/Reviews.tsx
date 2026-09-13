@@ -1,4 +1,3 @@
-import React from "react";
 import SegevReviews from "../../assets/SegevReviews.avif";
 
 const Reviews = () => {
@@ -9,12 +8,13 @@ const Reviews = () => {
           src={SegevReviews}
           className="opacity-40 object-cover w-full min-h-[650px] md:h-full"
           alt=""
+          loading="lazy"
+          decoding="async"
         />
       </div>
 
       <div
         className="absolute w-full h-full top-0 flex justify-between items-center p-4"
-        style={{ fontFamily: "Wix Madefor Text sans-serif" }}
       >
         <div className="flex flex-col-reverse md:flex-row justify-between h-full w-full  gap-5">
           <div className=" flex justify-center items-end md:w-[20%] w-full">

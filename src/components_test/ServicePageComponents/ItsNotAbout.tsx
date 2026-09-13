@@ -10,12 +10,11 @@ const ItsNotAbout = () => {
           <h3
             className="text-3xl md:text-6xl text-center"
             style={{
-              fontFamily: "Wix Madefor Text sans-serif",
               fontWeight: "100",
               color: "rgb(255,253,245)"
             }}
           >
-            ITS NOT ABOUT HOW YOU LOOK,ITS ABOUT HOWYOU FEEL
+            ITS NOT ABOUT HOW YOU LOOK, ITS ABOUT HOW YOU FEEL
           </h3>
           <p className='text-xs text-white'>
             SAPIR SKINCARE BEVERLY HILLS
@@ -23,7 +22,7 @@ const ItsNotAbout = () => {
           <span
             className="font-light text-xs text-white"
           >
-            FACE AND BODY CLINIC LOACTED ON RODEO DRIVE
+            FACE AND BODY CLINIC LOCATED ON RODEO DRIVE
           </span>
           <div className="flex flex-col justify-center items-center">
             <Link to="/contact"><button className="p-1 pr-10 pl-10 cursor-pointer text-sm font-extralight bg-white border border-transparent hover:border-black">
@@ -38,7 +37,3 @@ const ItsNotAbout = () => {
 }
 
 export default ItsNotAbout
-
-
-
-//' style={{backgroundImage:`url(${SegevClients7})`,backgroundSize: 'cover',backgroundPosition: 'center',}}

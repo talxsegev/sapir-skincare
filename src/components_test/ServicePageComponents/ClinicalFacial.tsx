@@ -64,12 +64,12 @@ const ClinicalFacial = () => {
   return (
     <div className='p-5 gap-5 flex flex-col items-center' style={{backgroundColor:"rgba(178,176,171, 0.8)",}}>
         <div>
-            <h1 className='text-3xl' style={{fontFamily: "Wix Madefor Text sans-serif",}}>CLINICAL FACIAL</h1>
+            <h1 className='text-3xl'>CLINICAL FACIAL</h1>
         </div>
         <div className='flex flex-col md:flex-row gap-5'>
             <div className='max-h-[1000px] flex flex-col gap-5 items-center'>
                 {arr.slice(0,3).map((item)=>(
-                    <div className='p-5 w-full md:max-w-[325px] flex flex-col items-center gap-5 ' style={{ backgroundColor: 'rgba(237, 235, 228, 1)' }}>
+                    <div key={item.title} className='p-5 w-full md:max-w-[325px] flex flex-col items-center gap-5 ' style={{ backgroundColor: 'rgba(237, 235, 228, 1)' }}>
                     <h3 className='border-b-1 p-2 w-full text-center border-black font-bold text-xl'>{item.title}</h3>
                     <p className='text-sm font-light'>{item.subTitle}</p>
                     <p className='text-3xl font-light'>{item.price}</p>
@@ -78,7 +78,7 @@ const ClinicalFacial = () => {
             </div>
             <div className='max-h-[1100px] flex flex-col gap-5 items-center'>
             {arr.slice(3,6).map((item)=>(
-                    <div className='p-5 w-full md:max-w-[325px] flex flex-col items-center gap-5 ' style={{ backgroundColor: 'rgba(237, 235, 228, 1)' }}>
+                    <div key={item.title} className='p-5 w-full md:max-w-[325px] flex flex-col items-center gap-5 ' style={{ backgroundColor: 'rgba(237, 235, 228, 1)' }}>
                     <h3 className='border-b-1 p-2 w-full text-center border-black font-bold text-xl'>{item.title}</h3>
                     <p className='text-sm font-light'>{item.subTitle}</p>
                     <p className='text-3xl font-light'>{item.price}</p>
@@ -87,7 +87,7 @@ const ClinicalFacial = () => {
             </div>
             <div className='max-h-[1200px] flex flex-col gap-5 items-center'>
             {arr.slice(6,9).map((item)=>(
-                    <div className='p-5 w-full md:max-w-[325px] flex flex-col items-center gap-5 ' style={{ backgroundColor: 'rgba(237, 235, 228, 1)' }}>
+                    <div key={item.title} className='p-5 w-full md:max-w-[325px] flex flex-col items-center gap-5 ' style={{ backgroundColor: 'rgba(237, 235, 228, 1)' }}>
                     <h3 className='border-b-1 p-2 w-full text-center border-black font-bold text-xl'>{item.title}</h3>
                     <p className='text-sm font-light'>{item.subTitle}</p>
                     <p className='text-3xl font-light'>{item.price}</p>
@@ -97,21 +97,21 @@ const ClinicalFacial = () => {
         </div>
         <div className='flex flex-col gap-5'>
         <div>
-            <h1 className='text-3xl text-center' style={{fontFamily: "Wix Madefor Text sans-serif",}}>BODY TREATMENT</h1>
+            <h1 className='text-3xl text-center'>BODY TREATMENT</h1>
         </div>
         <div className='flex flex-col md:flex-row gap-5'>
         {arr.slice(9,10).map((item)=>(
-                    <div className='p-5 w-full md:max-w-[325px] min-h-[385px] max-h-[385px] flex flex-col items-center gap-5 ' style={{ backgroundColor: 'rgba(237, 235, 228, 1)' }}>
+                    <div key={item.title} className='p-5 w-full md:max-w-[325px] min-h-[385px] max-h-[385px] flex flex-col items-center gap-5 ' style={{ backgroundColor: 'rgba(237, 235, 228, 1)' }}>
                     <h3 className='border-b-1 p-2 w-full text-center border-black font-bold text-xl' >{item.title}</h3>
                     <p className='text-sm font-light'>{item.subTitle}</p>
-                    <p className='text-lg font-light text-center' style={{fontFamily: "Wix Madefor Text sans-serif",}}>{item.price}</p>
+                    <p className='text-lg font-light text-center'>{item.price}</p>
                 </div>
                 ))}   
         {arr.slice(10,11).map((item)=>(
-                    <div className='p-5 w-full md:max-w-[325px] min-h-[485px] max-h-[485px] flex flex-col items-center gap-5 ' style={{ backgroundColor: 'rgba(237, 235, 228, 1)' }}>
+                    <div key={item.title} className='p-5 w-full md:max-w-[325px] min-h-[485px] max-h-[485px] flex flex-col items-center gap-5 ' style={{ backgroundColor: 'rgba(237, 235, 228, 1)' }}>
                     <h3 className='border-b-1 p-2 w-full text-center border-black font-bold text-xl' >{item.title}</h3>
                     <p className='text-sm font-light'>{item.subTitle}</p>
-                    <p className='text-lg font-light text-center' style={{fontFamily: "Wix Madefor Text sans-serif",}}>{item.price}</p>
+                    <p className='text-lg font-light text-center'>{item.price}</p>
                 </div>
                 ))}   
         </div>

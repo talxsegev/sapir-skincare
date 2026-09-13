@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 
 export interface BlogPost {
   img: string;
@@ -13,7 +13,7 @@ export interface BlogPost {
   heartIcon: React.ReactNode;
 }
 
-const Posts = ({arr}:any) => {
+const Posts = ({ arr }: { arr: BlogPost[] }) => {
 
   return (
     <div className='pt-5 pb-5 md:p-20 flex flex-col items-center ' style={{ backgroundColor: "rgb(255, 253, 245)" }}>
@@ -22,7 +22,7 @@ const Posts = ({arr}:any) => {
             return(
             <div key={index} className=' border-r-0 border-l-0 border-t-0 border-b-1 border-gray-300 md:border max-h-[200px] md:max-h-[500px] md:border-black flex w-full xl:min-w-[800px] xl:max-w-[800px] '>
                 <div className=''>
-                    <img className='max-w-[200px] h-full xl:max-w-[400px]' src={item.img} alt="" />
+                    <img className='max-w-[200px] h-full xl:max-w-[400px]' src={item.img} alt={item.title} loading="lazy" decoding="async" />
                 </div>
                 <div className='p-2 md:p-5 flex flex-col justify-between w-full'>
                     <div className='flex items-center justify-between gap-5'>

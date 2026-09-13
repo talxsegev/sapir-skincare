@@ -11,6 +11,8 @@ const UnlockYourBestSkin = () => {
             src={ImgUnlock1}
             className="w-full max-h-[230px] md:max-h-[430px]"
             alt=""
+            loading="lazy"
+            decoding="async"
           />
         </div>
         <div className="w-full md:w-1/2">
@@ -18,6 +20,8 @@ const UnlockYourBestSkin = () => {
             src={ImgUnlock2}
             className="w-full max-h-[230px] md:max-h-[430px]"
             alt=""
+            loading="lazy"
+            decoding="async"
           />
         </div>
         <div>
@@ -30,7 +34,6 @@ const UnlockYourBestSkin = () => {
               <h3
                 className="text-2xl md:text-3xl font-light text-center"
                 style={{
-                  fontFamily: "Wix Madefor Text sans-serif",
                   fontWeight: "lighter",
                   color: "rgb(255,253,245)",
                 }}

@@ -13,7 +13,7 @@ const ConnectDesktop = () => {
           </h3>
           <div className="flex justify-between relative gap-5">
             <div>
-              <img src={ImgUnlock1} className="max-h-[330px]" alt="" />
+              <img src={ImgUnlock1} className="max-h-[330px]" alt="" loading="lazy" decoding="async" />
             </div>
             <div
               className=" p-5 absolute  max-h-[150px] min-w-[300px] xl:left-2/2 md:left-1/2  xl:top-0/2 md:top-2/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center"
@@ -26,7 +26,7 @@ const ConnectDesktop = () => {
               </p>
             </div>
             <div>
-              <img src={ImgUnlock2} className="max-h-[330px]" alt="" />
+              <img src={ImgUnlock2} className="max-h-[330px]" alt="" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
@@ -49,9 +49,9 @@ const ConnectDesktop = () => {
               </a>
             </div>
             <div className="flex gap-2 items-center">
-              <a href="" className="flex gap-2">
+              <a href="tel:+18182662387" className="flex gap-2">
                 <FaPhoneAlt />
-                <span className="text-xs font-light">(818) 266-2387i</span>
+                <span className="text-xs font-light">(818) 266-2387</span>
               </a>
             </div>
           </div>

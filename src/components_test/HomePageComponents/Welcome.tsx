@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import type { FC } from "react";
 import SegevPhoto3 from "../../assets/SegevPhoto3.avif";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,6 @@ const Welcome : FC = () => {
           <h2
             className="absolute top-20 md:top-16  font-light text-5xl md:text-7xl"
             style={{
-              fontFamily: "Wix Madefor Text sans-serif",
               fontWeight: "lighter",
             }}
           >
@@ -18,7 +17,7 @@ const Welcome : FC = () => {
           </h2>
         </div>
         <div className="flex items-start justify-center md:justify-end">
-          <img src={SegevPhoto3} className="max-w-[307px] md:max-w-[407px]" alt="" />
+          <img src={SegevPhoto3} className="max-w-[307px] md:max-w-[407px]" alt="" loading="lazy" decoding="async" />
         </div>
       </div>
       <div className="p-10 flex flex-col justify-center max-w-[465px] md:p-0">
@@ -26,7 +25,6 @@ const Welcome : FC = () => {
           <h3
             className="text-4xl font-light"
             style={{
-              fontFamily: "Wix Madefor Text sans-serif",
               fontWeight: "lighter",
             }}
           >
