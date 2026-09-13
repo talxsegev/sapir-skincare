@@ -16,6 +16,7 @@ const Footer = () => {
       <nav aria-label="Footer" className="flex gap-6 text-xs font-light">
         <Link to="/about" className="hover:underline">About</Link>
         <Link to="/service" className="hover:underline">Services</Link>
+        <Link to="/consultation" className="hover:underline">Consultation</Link>
         <Link to="/blog" className="hover:underline">Blog</Link>
         <Link to="/contact" className="hover:underline">Contact</Link>
       </nav>

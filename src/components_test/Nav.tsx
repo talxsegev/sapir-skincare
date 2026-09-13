@@ -14,6 +14,7 @@ const NAV_LINKS = [
   { to: "/", label: "HOME" },
   { to: "/about", label: "ABOUT" },
   { to: "/service", label: "SERVICE" },
+  { to: "/consultation", label: "CONSULTATION" },
   { to: "/blog", label: "BLOG" },
   { to: "/contact", label: "CONTACT" },
 ];
@@ -64,7 +65,7 @@ const Nav = () => {
           </Sheet>
         </div>
 
-        <nav aria-label="Primary" className="hidden md:flex gap-15">
+        <nav aria-label="Primary" className="hidden md:flex gap-3 lg:gap-8 xl:gap-15">
           {NAV_LINKS.map(({ to, label }) => (
             <Link key={to} to={to} className="cursor-pointer" aria-current={location.pathname === to ? "page" : undefined}>
               <div className={`p-2 ${location.pathname === to ? "border-b-2 border-black" : ""}`}>
