@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { checkIngredients, type CheckResults } from "../../lib/ingredientChecker";
+import { preprocessForOcr } from "../../lib/ocrPreprocess";
+import LabelCropModal from "./LabelCropModal";
 
 const EVIDENCE_COLORS: Record<string, string> = {
   strong: "bg-green-50 border-green-300 text-green-800",
@@ -22,6 +24,7 @@ const Cheker = () => {
   const [results, setResults] = useState<CheckResults | null>(null);
   const [scanStatus, setScanStatus] = useState<ScanStatus>("idle");
   const [scanProgress, setScanProgress] = useState(0);
+  const [pendingImageUrl, setPendingImageUrl] = useState<string | null>(null);
 
   const submitBtn = () => {
     if (!input.trim()) return;
@@ -33,12 +36,17 @@ const Cheker = () => {
     setResults(null);
   };
 
-  const handlePhotoSelected = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePhotoSelected = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     e.target.value = ""; // allow re-selecting the same file next time
     if (!file) return;
 
     setResults(null);
+    setScanStatus("idle");
+    setPendingImageUrl(URL.createObjectURL(file));
+  };
+
+  const runOcr = async (source: HTMLCanvasElement) => {
     setScanStatus("loading");
     setScanProgress(0);
 
@@ -53,7 +61,7 @@ const Cheker = () => {
           }
         },
       });
-      const { data } = await worker.recognize(file);
+      const { data } = await worker.recognize(source);
       setInput(data.text.trim());
       setScanStatus("idle");
     } catch (error) {
@@ -62,6 +70,18 @@ const Cheker = () => {
     } finally {
       if (worker) await worker.terminate();
     }
+  };
+
+  const handleCropConfirm = (croppedCanvas: HTMLCanvasElement) => {
+    if (pendingImageUrl) URL.revokeObjectURL(pendingImageUrl);
+    setPendingImageUrl(null);
+    preprocessForOcr(croppedCanvas);
+    void runOcr(croppedCanvas);
+  };
+
+  const handleCropCancel = () => {
+    if (pendingImageUrl) URL.revokeObjectURL(pendingImageUrl);
+    setPendingImageUrl(null);
   };
 
   const hasAnyMatch = !!results && (results.avoidMatches.length > 0 || results.infoMatches.length > 0);
@@ -214,6 +234,14 @@ const Cheker = () => {
           not a guarantee of results for any specific product or concentration.
         </p>
       </div>
+
+      {pendingImageUrl && (
+        <LabelCropModal
+          imageUrl={pendingImageUrl}
+          onConfirm={handleCropConfirm}
+          onCancel={handleCropCancel}
+        />
+      )}
     </div>
   );
 };
