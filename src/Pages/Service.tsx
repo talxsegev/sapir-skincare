@@ -7,6 +7,7 @@ import BottomNav from '../components_test/BottomNav'
 import Footer from '../components_test/Footer'
 import UnlockYourBestSkin from '../components_test/ServicePageComponents/UnlockYourBestSkin'
 import Cheker from '../components_test/ServicePageComponents/Cheker'
+import ConsultationCta from '../components_test/ServicePageComponents/ConsultationCta'
 
 const Service = () => {
   return (
@@ -21,6 +22,7 @@ const Service = () => {
       <PackagesAreComing />
       <Process />
       <UnlockYourBestSkin />
+      <ConsultationCta />
       <Cheker />
       <BottomNav />
       <Footer />
