@@ -15,9 +15,13 @@ function evidenceClass(evidenceLevel: string | null) {
   return EVIDENCE_COLORS.limited;
 }
 
+type ScanStatus = "idle" | "loading" | "recognizing" | "error";
+
 const Cheker = () => {
   const [input, setInput] = useState<string>("");
   const [results, setResults] = useState<CheckResults | null>(null);
+  const [scanStatus, setScanStatus] = useState<ScanStatus>("idle");
+  const [scanProgress, setScanProgress] = useState(0);
 
   const submitBtn = () => {
     if (!input.trim()) return;
@@ -29,7 +33,39 @@ const Cheker = () => {
     setResults(null);
   };
 
+  const handlePhotoSelected = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    e.target.value = ""; // allow re-selecting the same file next time
+    if (!file) return;
+
+    setResults(null);
+    setScanStatus("loading");
+    setScanProgress(0);
+
+    let worker: Awaited<ReturnType<typeof import("tesseract.js").createWorker>> | null = null;
+    try {
+      const { createWorker } = await import("tesseract.js");
+      worker = await createWorker("eng", 1, {
+        logger: (m) => {
+          if (m.status === "recognizing text") {
+            setScanStatus("recognizing");
+            setScanProgress(Math.round(m.progress * 100));
+          }
+        },
+      });
+      const { data } = await worker.recognize(file);
+      setInput(data.text.trim());
+      setScanStatus("idle");
+    } catch (error) {
+      console.error("Ingredient label scan failed:", error);
+      setScanStatus("error");
+    } finally {
+      if (worker) await worker.terminate();
+    }
+  };
+
   const hasAnyMatch = !!results && (results.avoidMatches.length > 0 || results.infoMatches.length > 0);
+  const isScanning = scanStatus === "loading" || scanStatus === "recognizing";
 
   return (
     <div className="bg-white p-5 flex flex-col justify-center items-center" style={{ backgroundColor: "rgb(255, 253, 245)" }}>
@@ -40,11 +76,13 @@ const Cheker = () => {
         <div className="flex flex-col text-center gap-2">
           <h1 className="text-2xl">Your Ingredients</h1>
           <h1 className="text-xl">
-            Add your ingredients below (separated by commas or new lines) to check for known pore-clogging
-            ingredients and see evidence-based info on recognized active ingredients.
+            Add your ingredients below (separated by commas or new lines), or scan a product label with your
+            camera, to check for known pore-clogging ingredients and see evidence-based info on recognized
+            active ingredients.
           </h1>
         </div>
-        <div className="w-full">
+
+        <div className="w-full flex flex-col gap-2">
           <label htmlFor="cheker" className="sr-only">Ingredient list</label>
           <textarea
             value={input}
@@ -54,6 +92,36 @@ const Cheker = () => {
             placeholder="e.g. Water, Organic Coconut Oil, Niacinamide, Glycerin, Retinol..."
             className="w-full h-40 border hover:border-black transition-colors  duration-300 rounded-lg p-2"
           ></textarea>
+
+          <div className="flex flex-col gap-1">
+            <label
+              htmlFor="label-photo"
+              className={`self-start rounded-full border px-4 py-2 text-sm font-medium ${
+                isScanning ? "opacity-50 cursor-not-allowed" : "cursor-pointer hover:border-black"
+              }`}
+            >
+              📷 {isScanning ? "Reading label..." : "Scan Ingredient Label"}
+            </label>
+            <input
+              type="file"
+              accept="image/*"
+              capture="environment"
+              id="label-photo"
+              disabled={isScanning}
+              className="sr-only"
+              onChange={handlePhotoSelected}
+            />
+            <div role="status" aria-live="polite" className="text-xs text-gray-500">
+              {scanStatus === "loading" && "Loading text scanner..."}
+              {scanStatus === "recognizing" && `Reading label... ${scanProgress}%`}
+              {scanStatus === "error" && (
+                <span className="text-red-600">
+                  Couldn't read that photo — try a closer, well-lit shot of the ingredient list, or type it in manually.
+                </span>
+              )}
+              {scanStatus === "idle" && input && "Scanned text added below — please check it over before submitting, scans aren't always perfect."}
+            </div>
+          </div>
         </div>
 
         <div className="w-full flex flex-col gap-5" role="status" aria-live="polite">
@@ -129,7 +197,8 @@ const Cheker = () => {
           <button
             style={{ backgroundColor: "#d79a88" }}
             onClick={submitBtn}
-            className="p-5 rounded-full border text-white cursor-pointer"
+            disabled={isScanning}
+            className="p-5 rounded-full border text-white cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
           >
             SUBMIT
           </button>
