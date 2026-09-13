@@ -17,7 +17,7 @@ const NotAboutNow = () => {
           />
           <div className="flex flex-col gap-5 md:gap-5 absolute top-15 p-1 text-center xl:top-0 xl:p-20 md:p-0">
             <h2
-              className="text-white text-3xl font-mono xl:text-4xl md:text-2xl"
+              className="text-white text-3xl xl:text-4xl md:text-2xl"
             >
               ITS NOT ABOUT HOW YOU LOOK, ITS <br /> ABOUT HOW YOU FEEL
             </h2>
