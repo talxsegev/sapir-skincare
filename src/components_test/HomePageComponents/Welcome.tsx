@@ -8,7 +8,7 @@ const Welcome : FC = () => {
       <div className="relative min-w-[350px] md:min-w-[480px] p-3 md:p-0">
         <div>
           <h2
-            className="absolute top-8 md:top-16  font-light text-5xl md:text-7xl"
+            className="absolute -top-10 md:top-16  font-light text-5xl md:text-7xl"
             style={{
               fontWeight: "lighter",
             }}
