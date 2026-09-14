@@ -52,6 +52,13 @@ const Terms = () => {
           cancellation window or fee with us directly at booking, as they may vary by service.
         </p>
 
+        <h2>Acceptable Use</h2>
+        <p>
+          You agree to use this website lawfully and not to attempt to interfere with its operation, submit false
+          or fraudulent information through our forms, or use the Ingredient Checker or consultation survey to
+          harass, impersonate, or misrepresent yourself.
+        </p>
+
         <h2>Intellectual Property</h2>
         <p>
           The text, images, and design of this website belong to Sapir Skincare unless otherwise noted, and may
@@ -63,6 +70,22 @@ const Terms = () => {
           To the fullest extent permitted by law, Sapir Skincare is not liable for any indirect, incidental, or
           consequential damages arising from your use of this website or its tools. Our services are provided on
           an "as is" basis, and your use of any recommendation is at your own discretion.
+        </p>
+
+        <h2>Governing Law and Disputes</h2>
+        <p>
+          These terms are governed by the laws of the State of California, without regard to conflict-of-law
+          principles. Any dispute arising from these terms or our services will be handled in the state or
+          federal courts located in Los Angeles County, California. Before filing a claim, please contact us
+          directly — most concerns can be resolved informally.
+        </p>
+
+        <h2>Severability and Entire Agreement</h2>
+        <p>
+          If any part of these terms is found unenforceable, the rest remains in full effect. These terms,
+          together with our <a href="/privacy-policy" className="underline">Privacy Policy</a> and{" "}
+          <a href="/disclaimers" className="underline">Disclaimers</a>, make up the entire agreement between you
+          and Sapir Skincare regarding your use of this website.
         </p>
 
         <h2>Changes to These Terms</h2>

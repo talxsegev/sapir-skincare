@@ -57,6 +57,22 @@ const PrivacyPolicy = () => {
           you with a skincare assessment, unless you separately consent (for example, to a testimonial).
         </p>
 
+        <h2>Cookies and Automatically Collected Data</h2>
+        <p>
+          We don't use analytics, advertising, or tracking cookies. Our hosting provider, Netlify, automatically
+          logs standard technical data for security and reliability (like IP address, browser type, and pages
+          visited) for every site it hosts; we don't have access to use this for tracking or marketing. While
+          you're filling out the consultation survey, your in-progress answers are held only in your browser's
+          active memory (not saved to a cookie or file) — if you close the tab before submitting, they're gone.
+        </p>
+
+        <h2>Security</h2>
+        <p>
+          This site is served over HTTPS, and form submissions are transmitted securely to EmailJS and Netlify
+          Forms. No method of transmission or storage is 100% secure, but we don't ask for or store sensitive
+          information like payment card numbers on this website.
+        </p>
+
         <h2>Your Choices and Rights</h2>
         <p>
           You may ask us at any time to access, correct, or delete the personal information we hold about you,
@@ -75,6 +91,13 @@ const PrivacyPolicy = () => {
 
         <h2>Children's Privacy</h2>
         <p>This site and our services are intended for adults. We do not knowingly collect information from anyone under 18.</p>
+
+        <h2>International Visitors</h2>
+        <p>
+          This website and our studio are based in California, USA, and your information is handled here. If
+          you're visiting from outside the United States, you're choosing to share your information with a
+          business operating under U.S. law.
+        </p>
 
         <h2>Changes to This Policy</h2>
         <p>We may update this policy from time to time. The "Last updated" date above reflects the most recent revision.</p>

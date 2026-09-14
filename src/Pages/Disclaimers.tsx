@@ -48,11 +48,33 @@ const Disclaimers = () => {
           a new allergy.
         </p>
 
+        <h2>Patch Test Recommendation</h2>
+        <p>
+          Before using any new product — whether recommended through a consultation or found using the
+          Ingredient Checker — we recommend patch testing on a small area of skin and waiting 24–48 hours to
+          check for a reaction, especially if you have sensitive skin, known allergies, or are trying an active
+          ingredient for the first time.
+        </p>
+
         <h2>Results May Vary</h2>
         <p>
           Any before/after examples, testimonials, or results described on this site or on our social media
           reflect individual experiences. Results vary from person to person, and we cannot guarantee a specific
           outcome from any product or service.
+        </p>
+
+        <h2>Photos and Testimonials</h2>
+        <p>
+          We only ever share a client's photos, story, or testimonial publicly (for example, on our website or
+          social media) with that client's separate, explicit permission. Submitting consultation photos to us
+          for your assessment does not, by itself, give us permission to use them publicly.
+        </p>
+
+        <h2>Pricing and Availability</h2>
+        <p>
+          Service pricing, descriptions, and availability on this site are provided for general information and
+          may change without notice. Please confirm current pricing and availability with us directly when
+          booking.
         </p>
 
         <h2>External Links</h2>
