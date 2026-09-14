@@ -59,6 +59,14 @@ const Terms = () => {
           harass, impersonate, or misrepresent yourself.
         </p>
 
+        <h2>Right to Refuse or Terminate Service</h2>
+        <p>
+          We reserve the right, at our discretion, to decline to schedule, to reschedule, or to discontinue an
+          appointment or service — for example, if we believe a treatment isn't appropriate for your health
+          situation, or in response to conduct that violates our{" "}
+          <a href="/studio-policies" className="underline">Studio Policies</a>.
+        </p>
+
         <h2>Intellectual Property</h2>
         <p>
           The text, images, and design of this website belong to Sapir Skincare unless otherwise noted, and may

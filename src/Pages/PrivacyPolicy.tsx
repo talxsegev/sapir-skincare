@@ -69,18 +69,38 @@ const PrivacyPolicy = () => {
         <h2>Security</h2>
         <p>
           This site is served over HTTPS, and form submissions are transmitted securely to EmailJS and Netlify
-          Forms. No method of transmission or storage is 100% secure, but we don't ask for or store sensitive
-          information like payment card numbers on this website.
+          Forms. No security measures are perfect or impenetrable, and we can't guarantee absolute security of
+          information sent over the internet — but we don't ask for or store sensitive information like payment
+          card numbers on this website.
         </p>
 
         <h2>Your Choices and Rights</h2>
         <p>
-          You may ask us at any time to access, correct, or delete the personal information we hold about you,
-          including consultation photos, by emailing{" "}
-          <a href="mailto:sapirskincarela@gmail.com" className="underline">sapirskincarela@gmail.com</a>. If you
-          are a California resident, you have rights under the California Consumer Privacy Act (CCPA) to know
-          what personal information we collect and to request its deletion; we honor these requests for all
-          visitors regardless of location.
+          Depending on where you live, you may have some or all of the following rights regarding the personal
+          information we hold about you. To exercise any of them, email{" "}
+          <a href="mailto:sapirskincarela@gmail.com" className="underline">sapirskincarela@gmail.com</a> — we may
+          ask you to verify your identity first.
+        </p>
+        <ul>
+          <li><strong>Right to Know / Access:</strong> ask what personal information we hold about you.</li>
+          <li><strong>Right to Correct:</strong> ask us to fix inaccurate information.</li>
+          <li><strong>Right to Delete:</strong> ask us to delete your information, including consultation answers and photos.</li>
+          <li><strong>Right to Portability:</strong> ask for a copy of your information in a portable format.</li>
+        </ul>
+        <p>
+          If you are a California resident, these rights are also guaranteed under the California Consumer
+          Privacy Act (CCPA); we honor them for every visitor regardless of location, and we will not
+          discriminate against you (for example, by refusing service) for exercising them.
+        </p>
+
+        <h2>Complaints</h2>
+        <p>
+          If you have a concern about how we've handled your personal information, please contact us first at{" "}
+          <a href="mailto:sapirskincarela@gmail.com" className="underline">sapirskincarela@gmail.com</a> so we
+          can try to resolve it directly. California residents may also lodge a complaint with the{" "}
+          <a href="https://oag.ca.gov/privacy/ccpa" target="_blank" rel="noopener noreferrer" className="underline">
+            California Attorney General's office
+          </a>.
         </p>
 
         <h2>Data Retention</h2>

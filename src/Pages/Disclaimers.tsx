@@ -23,7 +23,15 @@ const Disclaimers = () => {
         <p>
           Nothing on this website is medical advice, a medical diagnosis, or a treatment plan. Sapir Skincare
           offers cosmetic skincare services and general information only. Always see a licensed dermatologist or
-          physician for any medical concern, and tell them about any product or treatment you're considering.
+          physician for any medical concern, and never disregard or delay seeking professional medical advice
+          because of something you read on this website.
+        </p>
+
+        <h2>Cosmetic Use Only</h2>
+        <p>
+          The skincare services and products described or recommended on this site are intended for cosmetic use
+          only. They are not intended to diagnose, treat, cure, or prevent any disease, and results vary from
+          person to person and are not guaranteed.
         </p>
 
         <h2>Ingredient Checker</h2>
@@ -88,6 +96,7 @@ const Disclaimers = () => {
           Questions about any of these disclaimers? Email{" "}
           <a href="mailto:sapirskincarela@gmail.com" className="underline">sapirskincarela@gmail.com</a>.
         </p>
+        <p className="!opacity-70 !text-xs">By using this website, you acknowledge and agree to this disclaimer.</p>
       </LegalLayout>
       <BottomNav />
       <Footer />
