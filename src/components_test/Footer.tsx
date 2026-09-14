@@ -41,6 +41,13 @@ const Footer = () => {
           </a>
         </div>
         <p className="text-xs font-light">&copy; {year} Sapir Skincare. All rights reserved.</p>
+        <nav aria-label="Legal" className="flex flex-wrap justify-center md:justify-end gap-x-4 gap-y-1 text-[11px] font-light opacity-70">
+          <Link to="/faq" className="hover:underline">FAQs</Link>
+          <Link to="/privacy-policy" className="hover:underline">Privacy Policy</Link>
+          <Link to="/terms-of-service" className="hover:underline">Terms of Service</Link>
+          <Link to="/disclaimers" className="hover:underline">Disclaimers</Link>
+          <Link to="/studio-policies" className="hover:underline">Studio Policies</Link>
+        </nav>
       </div>
     </footer>
   );

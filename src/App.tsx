@@ -8,6 +8,11 @@ const Service = lazy(() => import("./Pages/Service"));
 const Blog = lazy(() => import("./Pages/Blog"));
 const Contact = lazy(() => import("./Pages/Contact"));
 const Consultation = lazy(() => import("./Pages/Consultation"));
+const PrivacyPolicy = lazy(() => import("./Pages/PrivacyPolicy"));
+const Terms = lazy(() => import("./Pages/Terms"));
+const Disclaimers = lazy(() => import("./Pages/Disclaimers"));
+const StudioPolicies = lazy(() => import("./Pages/StudioPolicies"));
+const FAQ = lazy(() => import("./Pages/FAQ"));
 const NotFound = lazy(() => import("./Pages/NotFound"));
 
 function App() {
@@ -22,6 +27,11 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/consultation" element={<Consultation />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<Terms />} />
+          <Route path="/disclaimers" element={<Disclaimers />} />
+          <Route path="/studio-policies" element={<StudioPolicies />} />
+          <Route path="/faq" element={<FAQ />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

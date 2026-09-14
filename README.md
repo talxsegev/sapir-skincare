@@ -67,11 +67,28 @@ effect on Netlify.
 
 See `public/.htaccess`, `netlify.toml`, `public/robots.txt`, and `public/sitemap.xml`.
 
+## Legal & informational pages
+
+The site includes a Privacy Policy (`/privacy-policy`), Terms of Service
+(`/terms-of-service`), Disclaimers (`/disclaimers`), Studio Policies
+(`/studio-policies` — our code-of-conduct-style page covering respectful
+conduct, appointments, and client safety), and FAQs (`/faq`). These matter
+here specifically because the consultation survey collects health-adjacent
+information (pregnancy/medical history, medications, allergies) and
+photos. They're linked from the footer on every page rather than the main
+nav, to avoid repeating the earlier nav-overflow issue.
+
+These pages were drafted to accurately describe what this site actually
+collects and does, but they are **not a substitute for legal review** —
+have an attorney review the Privacy Policy and Terms before relying on
+them, particularly given the health-adjacent data collection.
+
 ## Project structure
 
-- `src/Pages/` — one component per route (Home, About, Service, Blog, Contact, Consultation, 404)
+- `src/Pages/` — one component per route (Home, About, Service, Blog, Contact, Consultation, legal pages, 404)
 - `src/components_test/` — page sections and shared UI (nav, footer, forms, shadcn-style UI primitives)
 - `src/components_test/ConsultationPageComponents/` — the multi-step skin consultation survey
+- `src/components_test/LegalPageComponents/LegalLayout.tsx` — shared layout for the legal/informational pages
 - `src/components_test/SEO.tsx` — lightweight per-page `<title>`/meta tag manager
 - `src/data/ingredients.json` — the Ingredient Checker's merged ingredient dataset
 - `public/` — static assets copied as-is to the build output (favicons, robots.txt, sitemap.xml, `.htaccess`)
